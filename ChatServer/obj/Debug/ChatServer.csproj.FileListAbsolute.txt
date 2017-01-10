@@ -1,0 +1,21 @@
+C:\Users\Bojo\Source\Workspaces\Serpent\WindowsFormsApplication1\WindowsFormsApplication1\bin\Debug\WindowsFormsApplication1.exe.config
+C:\Users\Bojo\Source\Workspaces\Serpent\WindowsFormsApplication1\WindowsFormsApplication1\bin\Debug\WindowsFormsApplication1.exe
+C:\Users\Bojo\Source\Workspaces\Serpent\WindowsFormsApplication1\WindowsFormsApplication1\bin\Debug\WindowsFormsApplication1.pdb
+C:\Users\Bojo\Source\Workspaces\Serpent\WindowsFormsApplication1\WindowsFormsApplication1\obj\Debug\ChatServer.csprojResolveAssemblyReference.cache
+C:\Users\Bojo\Source\Workspaces\Serpent\WindowsFormsApplication1\WindowsFormsApplication1\obj\Debug\WindowsFormsApplication1.Properties.Resources.resources
+C:\Users\Bojo\Source\Workspaces\Serpent\WindowsFormsApplication1\WindowsFormsApplication1\obj\Debug\ChatServer.csproj.GenerateResource.Cache
+C:\Users\Bojo\Source\Workspaces\Serpent\WindowsFormsApplication1\WindowsFormsApplication1\obj\Debug\WindowsFormsApplication1.exe
+C:\Users\Bojo\Source\Workspaces\Serpent\WindowsFormsApplication1\WindowsFormsApplication1\obj\Debug\WindowsFormsApplication1.pdb
+C:\Users\Bojo\Source\Workspaces\Serpent\WindowsFormsApplication1\WindowsFormsApplication1\obj\Debug\ServerSideApplication.ServerForm.resources
+C:\Users\Bojo\Source\Workspaces\Serpent\Chat Project\WindowsFormsApplication1\WindowsFormsApplication1\bin\Debug\WindowsFormsApplication1.exe.config
+C:\Users\Bojo\Source\Workspaces\Serpent\Chat Project\WindowsFormsApplication1\WindowsFormsApplication1\obj\Debug\WindowsFormsApplication1.exe
+C:\Users\Bojo\Source\Workspaces\Serpent\Chat Project\WindowsFormsApplication1\WindowsFormsApplication1\obj\Debug\WindowsFormsApplication1.pdb
+C:\Users\Bojo\Source\Workspaces\Serpent\Chat Project\ChatServer\bin\Debug\WindowsFormsApplication1.exe.config
+C:\Users\Bojo\Source\Workspaces\Serpent\Chat Project\ChatServer\obj\Debug\WindowsFormsApplication1.exe
+C:\Users\Bojo\Source\Workspaces\Serpent\Chat Project\ChatServer\obj\Debug\WindowsFormsApplication1.pdb
+C:\Users\Bojo\Source\Workspaces\Serpent\Chat Project\ChatServer\bin\Debug\WindowsFormsApplication1.exe
+C:\Users\Bojo\Source\Workspaces\Serpent\Chat Project\ChatServer\bin\Debug\WindowsFormsApplication1.pdb
+C:\Users\Bojo\Source\Workspaces\Serpent\Chat Project\ChatServer\obj\Debug\ChatServer.csprojResolveAssemblyReference.cache
+C:\Users\Bojo\Source\Workspaces\Serpent\Chat Project\ChatServer\obj\Debug\ServerSideApplication.ServerForm.resources
+C:\Users\Bojo\Source\Workspaces\Serpent\Chat Project\ChatServer\obj\Debug\WindowsFormsApplication1.Properties.Resources.resources
+C:\Users\Bojo\Source\Workspaces\Serpent\Chat Project\ChatServer\obj\Debug\ChatServer.csproj.GenerateResource.Cache

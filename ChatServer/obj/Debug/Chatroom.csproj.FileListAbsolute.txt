@@ -1,0 +1,9 @@
+C:\Users\Bojo\Source\Workspaces\Serpent\WindowsFormsApplication1\WindowsFormsApplication1\bin\Debug\WindowsFormsApplication1.exe.config
+C:\Users\Bojo\Source\Workspaces\Serpent\WindowsFormsApplication1\WindowsFormsApplication1\obj\Debug\WindowsFormsApplication1.exe
+C:\Users\Bojo\Source\Workspaces\Serpent\WindowsFormsApplication1\WindowsFormsApplication1\obj\Debug\WindowsFormsApplication1.pdb
+C:\Users\Bojo\Source\Workspaces\Serpent\WindowsFormsApplication1\WindowsFormsApplication1\obj\Debug\Chatroom.csprojResolveAssemblyReference.cache
+C:\Users\Bojo\Source\Workspaces\Serpent\WindowsFormsApplication1\WindowsFormsApplication1\obj\Debug\WindowsFormsApplication1.Properties.Resources.resources
+C:\Users\Bojo\Source\Workspaces\Serpent\WindowsFormsApplication1\WindowsFormsApplication1\obj\Debug\Chatroom.csproj.GenerateResource.Cache
+C:\Users\Bojo\Source\Workspaces\Serpent\WindowsFormsApplication1\WindowsFormsApplication1\bin\Debug\WindowsFormsApplication1.exe
+C:\Users\Bojo\Source\Workspaces\Serpent\WindowsFormsApplication1\WindowsFormsApplication1\bin\Debug\WindowsFormsApplication1.pdb
+C:\Users\Bojo\Source\Workspaces\Serpent\WindowsFormsApplication1\WindowsFormsApplication1\obj\Debug\WindowsFormsApplication1.Server.resources
