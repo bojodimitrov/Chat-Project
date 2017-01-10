@@ -29,9 +29,9 @@ namespace ChatClient
                 sender = new Socket(AddressFamily.InterNetwork,
                         SocketType.Stream, ProtocolType.Tcp);
             }
-            catch (Exception e)
+            catch (SocketException exc)
             {
-                //Due to implement
+                throw new SocketNotInitializedException("Error: Unsuccessful socket initialisation.", exc);
             }
         }
 

@@ -13,14 +13,8 @@ namespace ChatClient
         public ClientForm()
         {
             InitializeComponent();
-            FormClosed += ClientForm_FormClosed;
         }
 
-        private void ClientForm_FormClosed(object sender, FormClosedEventArgs e)
-        {
-            //receiverThread.Abort();
-            //heartbeatThread.Abort();
-        }
 
         private void Client_Load(object sender, EventArgs e)
         {
@@ -34,9 +28,9 @@ namespace ChatClient
 
         private void Connect_Click(object sender, EventArgs e)
         {
-            Client clientListener = new Client(this.ipaddress.Text, usernameField.Text);
             try
             {
+                Client clientListener = new Client(this.ipaddress.Text, usernameField.Text);
                 clientListener.ConnectToServer();
                 Form chatroom = new Chatroom(clientListener, this);
                 receiverThread = new Thread(new ParameterizedThreadStart(clientListener.ReceiveMessage));
@@ -46,14 +40,18 @@ namespace ChatClient
                 receiverThread.Start(chatroom);
                 heartbeatThread.Start();
                 chatroom.Show();
+                Hide();
+
             }
-            catch (BadConnectionToServerException exc)
+            catch (Exception exc)
             {
-                notifactionBox.Text = "";
-                notifactionBox.AppendText(exc.Message, Color.Coral);
+                if (exc is BadConnectionToServerException || exc is BadConnectionToServerException)
+                {
+                    notifactionBox.Text = "";
+                    notifactionBox.AppendText(exc.Message, Color.Coral);
+                }
             }
 
-            Hide();
         }
 
         private void richTextBox1_TextChanged(object sender, EventArgs e)

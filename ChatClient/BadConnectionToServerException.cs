@@ -11,4 +11,6 @@ namespace ChatClient
             Мessage = excMessage;
         }
     }
+
+    
 }
