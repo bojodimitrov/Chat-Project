@@ -138,14 +138,14 @@ namespace ServerSideApplication
         {
             Socket handler = (Socket)handlerObj;
             handler.ReceiveTimeout = 3000;
-            byte[] bytes = new Byte[255];
+            byte[] bytes = new Byte[1024];
             int bytesRec = 0;
             bool running = true;
 
             while (running)
             {
                 data = null;
-                bytes = new byte[255];
+                bytes = new byte[1024];
                 try
                 {
                     bytesRec = handler.Receive(bytes);
