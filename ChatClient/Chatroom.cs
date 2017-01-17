@@ -10,6 +10,7 @@ namespace ChatClient
     {
         Client clientListener;
         ClientForm clientForm;
+
         public Chatroom(Client clientListener, ClientForm clientForm)
         {
             InitializeComponent();
@@ -39,10 +40,15 @@ namespace ChatClient
             clientListener.SendMessage(parsedMessage);
 
         }
+        private void panel1_Paint(object sender, PaintEventArgs e)
+        {
+
+        }
 
         //Methods for access of the elements in the Client class
         delegate void SetMessageFieldInvoker(string text);
         delegate void AppendTextInvoker(string text, Color color);
+        delegate void UpdatePanelInvoker(string text, char command);
 
         public void SetMessageField(string text)
         {

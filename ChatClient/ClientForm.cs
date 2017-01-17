@@ -30,7 +30,7 @@ namespace ChatClient
         {
             try
             {
-                Client clientListener = new Client(this.ipaddress.Text, usernameField.Text);
+                Client clientListener = new Client(this.ipaddress.Text, usernameField.Text, passwordField.Text);
                 clientListener.ConnectToServer();
                 Form chatroom = new Chatroom(clientListener, this);
                 receiverThread = new Thread(new ParameterizedThreadStart(clientListener.ReceiveMessage));
@@ -43,13 +43,10 @@ namespace ChatClient
                 Hide();
 
             }
-            catch (Exception exc)
+            catch (BadConnectionToServerException exc)
             {
-                if (exc is BadConnectionToServerException || exc is BadConnectionToServerException)
-                {
-                    notifactionBox.Text = "";
-                    notifactionBox.AppendText(exc.Message, Color.Coral);
-                }
+                notifactionBox.Text = "";
+                notifactionBox.AppendText(exc.Notification, Color.Crimson);
             }
 
         }

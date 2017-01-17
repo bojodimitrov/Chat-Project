@@ -4,11 +4,16 @@ namespace ChatClient
 {
     class BadConnectionToServerException : Exception
     {
-        public string Мessage { get; set; }
+        public string Notification { get; set; }
 
         public BadConnectionToServerException(string excMessage, Exception exc) : base(excMessage, exc)
         {
-            Мessage = excMessage;
+            Notification = excMessage;
+        }
+
+        public BadConnectionToServerException(string excMessage)
+        {
+            Notification = excMessage;
         }
     }
 

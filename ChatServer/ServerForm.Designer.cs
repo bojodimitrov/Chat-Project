@@ -41,7 +41,7 @@
             this.startServer.TabIndex = 0;
             this.startServer.Text = "Start server";
             this.startServer.UseVisualStyleBackColor = true;
-            this.startServer.Click += new System.EventHandler(this.startServer_Click);
+            this.startServer.Click += new System.EventHandler(this.StartServer_Click);
             // 
             // stopServer
             // 
@@ -51,7 +51,7 @@
             this.stopServer.TabIndex = 1;
             this.stopServer.Text = "Stop server";
             this.stopServer.UseVisualStyleBackColor = true;
-            this.stopServer.Click += new System.EventHandler(this.stopServer_Click);
+            this.stopServer.Click += new System.EventHandler(this.StopServer_Click);
             // 
             // notificationBox
             // 

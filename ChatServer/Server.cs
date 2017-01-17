@@ -1,11 +1,15 @@
 ﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
 using System.Net;
 using System.Net.Sockets;
+using System.Security.Cryptography;
 using System.Text;
 using System.Threading;
 using System.Threading.Tasks;
+using System.Xml;
+using System.Xml.Linq;
 
 namespace ServerSideApplication
 {
@@ -19,6 +23,7 @@ namespace ServerSideApplication
         static ServerForm serverForm;
         static Thread listenThread;
         static Socket handler;
+        static XmlDocument xmlFile;
 
         public static void Start(ServerForm form)
         {
@@ -27,7 +32,8 @@ namespace ServerSideApplication
             //Setting up socket
             ipAddress = IPAddress.Any;
             endPoint = new IPEndPoint(ipAddress, 11000);
-
+            xmlFile = new XmlDocument();
+            xmlFile.Load("database.xml");
             listener = new Socket(AddressFamily.InterNetwork,
                 SocketType.Stream, ProtocolType.Tcp);
 
@@ -42,7 +48,7 @@ namespace ServerSideApplication
                 listenThread.Start();
                 serverForm.AddNotification("Server started successfully.\n");
             }
-            catch { }//<=--------
+            catch { }
 
         }
 
@@ -77,31 +83,69 @@ namespace ServerSideApplication
 
                     handler = listener.Accept();
 
-
-                    string credentials = ReceiveCredentials(handler);
-                    connectedUsers.Add(handler, credentials);
-                    serverForm.AddNotification(credentials + " connected.\n");
-
-                    Thread handleThread = new Thread(new ParameterizedThreadStart(HandleMessage));
-                    handleThread.Start(handler);
+                    string usernameAndPassword = ReceiveCredentials(handler);
+                    string username = usernameAndPassword.Substring(0, usernameAndPassword.IndexOf('%'));
+                    string password = usernameAndPassword.Substring(usernameAndPassword.IndexOf('%') + 1);
+                    if (VerifyCredentials(usernameAndPassword, username, password))
+                    {
+                        Thread.Sleep(500);
+                        handler.Send(Encoding.UTF8.GetBytes("@correct"));
+                        connectedUsers.Add(handler, username);
+                        serverForm.AddNotification(username + " connected.\n");
+                        Thread handleThread = new Thread(new ParameterizedThreadStart(HandleMessage));
+                        handleThread.Start(handler);
+                    }
+                    else
+                    {
+                        Thread.Sleep(500);
+                        handler.Send(Encoding.UTF8.GetBytes("@incorrect"));
+                    }
                 }
             }
             catch
             { }
         }
 
+        private static bool VerifyCredentials(string credentials, string username, string password)
+        {
+
+            XmlNodeList elemUsernamesList = xmlFile.GetElementsByTagName("Username");
+            XmlNodeList elemPasswordsList = xmlFile.GetElementsByTagName("Password");
+            for (int i = 0; i < elemUsernamesList.Count; i++)
+            {
+                if (elemUsernamesList[i].InnerText == username && elemPasswordsList[i].InnerText == password)
+                {
+                    return true;
+                }
+                if (elemUsernamesList[i].InnerText == username && elemPasswordsList[i].InnerText != password)
+                {
+                    return false;
+                }
+            }
+            XmlNode userNode = xmlFile.CreateNode(XmlNodeType.Element, "User", null);
+            XmlNode usernameNode = xmlFile.CreateElement("Username");
+            usernameNode.InnerText = username;
+            XmlNode passwordNode = xmlFile.CreateElement("Password");
+            passwordNode.InnerText = password;
+            userNode.AppendChild(usernameNode);
+            userNode.AppendChild(passwordNode);
+            xmlFile.DocumentElement.AppendChild(userNode);
+            xmlFile.Save("database.xml");
+            return true;
+        }
+
         public static void HandleMessage(object handlerObj)
         {
             Socket handler = (Socket)handlerObj;
             handler.ReceiveTimeout = 3000;
-            byte[] bytes = new Byte[1024];
+            byte[] bytes = new Byte[255];
             int bytesRec = 0;
             bool running = true;
 
             while (running)
             {
                 data = null;
-                bytes = new byte[1024];
+                bytes = new byte[255];
                 try
                 {
                     bytesRec = handler.Receive(bytes);
@@ -110,9 +154,10 @@ namespace ServerSideApplication
                 {
                     break;
                 }
-                data += Encoding.ASCII.GetString(bytes, 0, bytesRec);
+                data += Encoding.UTF8.GetString(bytes, 0, bytesRec);
+
                 //Returning the message
-                if (data.IndexOf("#H") <= -1)
+                if (data.IndexOf("@H") <= -1)
                 {
                     foreach (var user in connectedUsers)
                     {
@@ -121,8 +166,13 @@ namespace ServerSideApplication
                     }
                 }
             }
-            serverForm.AddNotification(connectedUsers[handler] + " diconnected.\n");
+
+            if (!serverForm.IsClosed)
+            {
+                serverForm.AddNotification(connectedUsers[handler] + " diconnected.\n");
+            }
             connectedUsers.Remove(handler);
+
             try
             {
                 handler.Shutdown(SocketShutdown.Both);
@@ -136,10 +186,11 @@ namespace ServerSideApplication
             byte[] bytes = new Byte[1024];
             int bytesRec;
             bytesRec = handler.Receive(bytes);
-            string credentials = null;
-            credentials = Encoding.ASCII.GetString(bytes, 0, bytesRec);
-            return credentials;
+            string message = null;
+            message = Encoding.ASCII.GetString(bytes, 0, bytesRec);
+            return message;
         }
+
     }
 }
 

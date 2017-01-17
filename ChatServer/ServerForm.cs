@@ -12,9 +12,18 @@ namespace ServerSideApplication
 {
     public partial class ServerForm : Form
     {
+        public bool IsClosed { get; set; }
+
         public ServerForm()
         {
             InitializeComponent();
+            FormClosed += ServerFormClosed;
+        }
+
+        private void ServerFormClosed(object sender, FormClosedEventArgs e)
+        {
+            IsClosed = true;
+            Server.Stop(this);
         }
 
         private void Server_Load(object sender, EventArgs e)
@@ -22,12 +31,12 @@ namespace ServerSideApplication
 
         }
 
-        private void startServer_Click(object sender, EventArgs e)
+        private void StartServer_Click(object sender, EventArgs e)
         {
             Server.Start(this);
         }
 
-        private void stopServer_Click(object sender, EventArgs e)
+        private void StopServer_Click(object sender, EventArgs e)
         {
             Server.Stop(this);
         }

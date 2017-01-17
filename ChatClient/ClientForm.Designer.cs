@@ -34,6 +34,8 @@
             this.usernameField = new System.Windows.Forms.TextBox();
             this.usernameLabel = new System.Windows.Forms.Label();
             this.notifactionBox = new System.Windows.Forms.RichTextBox();
+            this.passwordField = new System.Windows.Forms.TextBox();
+            this.password = new System.Windows.Forms.Label();
             this.SuspendLayout();
             // 
             // ipaddress
@@ -46,7 +48,7 @@
             // 
             // Connect
             // 
-            this.Connect.Location = new System.Drawing.Point(290, 124);
+            this.Connect.Location = new System.Drawing.Point(289, 150);
             this.Connect.Name = "Connect";
             this.Connect.Size = new System.Drawing.Size(115, 47);
             this.Connect.TabIndex = 1;
@@ -89,11 +91,30 @@
             this.notifactionBox.Text = "";
             this.notifactionBox.TextChanged += new System.EventHandler(this.richTextBox1_TextChanged);
             // 
+            // passwordField
+            // 
+            this.passwordField.Location = new System.Drawing.Point(217, 124);
+            this.passwordField.Name = "passwordField";
+            this.passwordField.PasswordChar = '*';
+            this.passwordField.Size = new System.Drawing.Size(262, 20);
+            this.passwordField.TabIndex = 6;
+            // 
+            // password
+            // 
+            this.password.AutoSize = true;
+            this.password.Location = new System.Drawing.Point(158, 127);
+            this.password.Name = "password";
+            this.password.Size = new System.Drawing.Size(53, 13);
+            this.password.TabIndex = 8;
+            this.password.Text = "Password";
+            // 
             // ClientForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(704, 441);
+            this.Controls.Add(this.password);
+            this.Controls.Add(this.passwordField);
             this.Controls.Add(this.notifactionBox);
             this.Controls.Add(this.usernameLabel);
             this.Controls.Add(this.usernameField);
@@ -116,6 +137,8 @@
         private System.Windows.Forms.TextBox usernameField;
         private System.Windows.Forms.Label usernameLabel;
         private System.Windows.Forms.RichTextBox notifactionBox;
+        private System.Windows.Forms.TextBox passwordField;
+        private System.Windows.Forms.Label password;
     }
 }
 
